@@ -82,6 +82,104 @@
             z-index: 1;
         }
 
+        /* Elegant Marquee Section */
+        .marquee-container {
+            background: linear-gradient(90deg, #2a1810 0%, #4a2c20 50%, #2a1810 100%);
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .marquee-container::before,
+        .marquee-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .marquee-container::before {
+            left: 0;
+            background: linear-gradient(90deg, #2a1810 0%, transparent 100%);
+        }
+
+        .marquee-container::after {
+            right: 0;
+            background: linear-gradient(90deg, transparent 0%, #2a1810 100%);
+        }
+
+        .marquee-track {
+            display: flex;
+            animation: scroll 25s linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            padding: 18px 0;
+            white-space: nowrap;
+        }
+
+        .marquee-text {
+            color: #FFD700;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.2);
+            padding: 0 30px;
+        }
+
+        .marquee-icon {
+            color: #FFD700;
+            font-size: 1.4rem;
+            opacity: 0.8;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        .marquee-icon:nth-child(odd) {
+            animation-delay: 0.75s;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Decorative divider */
+        .gold-divider {
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 215, 0, 0.3) 20%, 
+                rgba(255, 215, 0, 0.8) 50%, 
+                rgba(255, 215, 0, 0.3) 80%, 
+                transparent 100%
+            );
+            margin: 0;
+        }
+
         /* Avatar frame */
         .avatar-frame {
             max-width: 900px;
@@ -147,6 +245,9 @@
             .header h2 {
                 font-size: 1.2rem;
             }
+            .marquee-text {
+                font-size: 1rem;
+            }
             .avatar-frame {
                 margin: 20px 15px;
                 padding: 15px;
@@ -158,6 +259,10 @@
                 margin: 0 15px 30px;
                 padding: 20px 15px;
             }
+            .marquee-container::before,
+            .marquee-container::after {
+                width: 40px;
+            }
         }
     </style>
 </head>
@@ -166,6 +271,35 @@
         <h1>Avatar Agentic AI</h1>
         <h2>Singapore</h2>
     </header>
+
+    <!-- Elegant Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span class="marquee-icon">✦</span>
+                <span class="marquee-text">We empower your workforce with advanced agentic AI capabilities to lead your enterprise into Industry 4.0.</span>
+                <span class="marquee-icon">◆</span>
+                <span class="marquee-text">We empower your workforce with advanced agentic AI capabilities to lead your enterprise into Industry 4.0.</span>
+                <span class="marquee-icon">✦</span>
+                <span class="marquee-text">We empower your workforce with advanced agentic AI capabilities to lead your enterprise into Industry 4.0.</span>
+                <span class="marquee-icon">◆</span>
+                <span class="marquee-text">We empower your workforce with advanced agentic AI capabilities to lead your enterprise into Industry 4.0.</span>
+                <span class="marquee-icon">✦</span>
+            </div>
+            <div class="marquee-content">
+                <span class="marquee-icon">✦</span>
+                <span class="marquee-text">We empower your workforce with advanced agentic AI capabilities to lead your enterprise into Industry 4.0.</span>
+                <span class="marquee-icon">◆</span>
+                <span class="marquee-text">We empower your workforce with advanced agentic AI capabilities to lead your enterprise into Industry 4.0.</span>
+                <span class="marquee-icon">✦</span>
+                <span class="marquee-text">We empower your workforce with advanced agentic AI capabilities to lead your enterprise into Industry 4.0.</span>
+                <span class="marquee-icon">◆</span>
+                <span class="marquee-text">We empower your workforce with advanced agentic AI capabilities to lead your enterprise into Industry 4.0.</span>
+                <span class="marquee-icon">✦</span>
+            </div>
+        </div>
+    </div>
+    <div class="gold-divider"></div>
 
     <main>
         <div class="avatar-frame">
